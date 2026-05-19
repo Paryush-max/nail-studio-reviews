@@ -15,7 +15,7 @@ const SERVICES = [
   "Press-on 🎀"
 ];
 
-const EXPERIENCES = ["Friendly artist 🥰","Premium experience 💎", "Fast service ⚡", "Long lasting 🛡️", "Beautiful art 🎨", "Hygienic setup 🌿", "Great pricing 💰"];
+const EXPERIENCES = ["Friendly artist 🥰", "Clean salon 🧼", "Premium experience 💎", "Fast service ⚡", "Long lasting 🛡️", "Beautiful art 🎨", "Hygienic setup 🌿", "Great pricing 💰"];
 const MOODS = ["Luxury 👑", "Cute 🧸", "Elegant 🦢", "Glamorous 🪩", "Minimal ☁️"];
 const LENGTHS = ["Short ⚡", "Medium 📝", "Long 📖"];
 
@@ -109,24 +109,25 @@ export function ReviewGenerator() {
     }, 1200);
   };
 
+  // Wrapped inside a forced "light" theme layout container
   return (
-    <div className="w-full max-w-2xl mx-auto px-3 sm:px-4 pb-24 relative z-10">
+    <div className="light w-full max-w-2xl mx-auto px-3 sm:px-4 pb-24 relative z-10 text-slate-800">
       <motion.div 
         initial={{ opacity: 0, y: 15 }} 
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/40 dark:bg-slate-900/40 backdrop-blur-2xl rounded-3xl p-4 sm:p-6 shadow-xl border border-white/20 dark:border-slate-800/40 flex flex-col gap-6"
+        className="bg-white/90 backdrop-blur-2xl rounded-3xl p-5 sm:p-8 shadow-xl border border-white/40 flex flex-col gap-6"
       >
         <div className="text-center pt-2">
-          <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-white mb-1">
+          <h2 className="text-2xl sm:text-3xl font-bold text-slate-800 mb-1">
             Loved your nails? 💅
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          <p className="text-xs sm:text-sm text-slate-500">
             Rate your visit and we'll write a perfect review for you!
           </p>
         </div>
 
         {/* Section 1: Star Rating Block */}
-        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-slate-100 dark:border-slate-800/60 shadow-sm flex flex-col items-center text-center">
+        <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex flex-col items-center text-center">
           <span className="text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-3">Your Rating</span>
           <div className="flex gap-2 sm:gap-3 justify-center">
             {[1, 2, 3, 4, 5].map((star) => {
@@ -146,7 +147,7 @@ export function ReviewGenerator() {
                       className={`w-9 h-9 sm:w-11 sm:h-11 transition-colors duration-200 drop-shadow-[0_2px_6px_rgba(251,113,133,0.1)] ${
                         isSelected 
                         ? "fill-rose-400 text-rose-400" 
-                        : "text-slate-200 dark:text-slate-700"
+                        : "text-slate-200"
                       }`} 
                     />
                   </motion.div>
@@ -160,7 +161,7 @@ export function ReviewGenerator() {
         </div>
 
         {/* Section 2: Services Block */}
-        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-slate-100 dark:border-slate-800/60 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
           <label className="block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-4">Select Services</label>
           <div className="flex flex-wrap gap-2.5">
             {SERVICES.map((s) => {
@@ -172,7 +173,7 @@ export function ReviewGenerator() {
                   className={`py-2.5 px-3.5 rounded-xl text-xs font-medium border transition-all duration-200 active:scale-95 cursor-pointer text-center ${
                     active 
                     ? "bg-gradient-to-r from-rose-400 to-pink-500 text-white border-transparent shadow-md shadow-pink-500/10 font-semibold" 
-                    : "bg-slate-50/60 dark:bg-slate-800/30 text-slate-600 dark:text-slate-300 border-slate-100 dark:border-slate-800 hover:border-rose-200"
+                    : "bg-slate-50/60 text-slate-600 border-slate-100 hover:border-rose-200 hover:bg-rose-50/30"
                   }`}
                 >
                   {s}
@@ -183,7 +184,7 @@ export function ReviewGenerator() {
         </div>
 
         {/* Section 3: Experience Highlights Block */}
-        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-slate-100 dark:border-slate-800/60 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
           <label className="block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-4">What did you love?</label>
           <div className="flex flex-wrap gap-2.5">
             {EXPERIENCES.map((e) => {
@@ -194,8 +195,8 @@ export function ReviewGenerator() {
                   onClick={() => toggleSelection(e, selectedExperiences, setSelectedExperiences)}
                   className={`py-2.5 px-3.5 rounded-xl text-xs font-medium border transition-all duration-200 active:scale-95 cursor-pointer text-left ${
                     active 
-                    ? "bg-rose-50 dark:bg-rose-950/20 text-rose-600 dark:text-rose-400 border-rose-200 dark:border-rose-900/60 font-semibold" 
-                    : "bg-slate-50/60 dark:bg-slate-800/30 text-slate-500 dark:text-slate-400 border-slate-100 dark:border-slate-800"
+                    ? "bg-rose-50 text-rose-600 border-rose-200 font-semibold" 
+                    : "bg-slate-50/60 text-slate-500 border-slate-100 hover:bg-slate-50"
                   }`}
                 >
                   {e}
@@ -206,7 +207,7 @@ export function ReviewGenerator() {
         </div>
 
         {/* Section 4: Formatting Configs Block */}
-        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-slate-100 dark:border-slate-800/60 shadow-sm flex flex-col gap-5">
+        <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex flex-col gap-5">
           <div>
             <label className="block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-3">Review Vibe</label>
             <div className="flex flex-wrap gap-2">
@@ -214,10 +215,10 @@ export function ReviewGenerator() {
                 <button
                   key={m}
                   onClick={() => setMood(m)}
-                  className={`py-2 px-3.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  className={`py-2 px-3.5 rounded-lg text-xs font-medium transition-all cursor-pointer border ${
                     mood === m 
-                    ? "bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold shadow-sm" 
-                    : "bg-slate-50 dark:bg-slate-800/40 text-slate-500 hover:bg-slate-100"
+                    ? "bg-slate-900 text-white font-semibold border-transparent shadow-sm" 
+                    : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
                   }`}
                 >
                   {m}
@@ -226,7 +227,7 @@ export function ReviewGenerator() {
             </div>
           </div>
 
-          <div className="border-t border-slate-50 dark:border-slate-800/50 pt-2" />
+          <div className="border-t border-slate-100 pt-2" />
 
           <div>
             <label className="block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-3">Length</label>
@@ -235,10 +236,10 @@ export function ReviewGenerator() {
                 <button
                   key={l}
                   onClick={() => setReviewLength(l)}
-                  className={`py-2 px-3.5 rounded-lg text-xs font-medium transition-all cursor-pointer ${
+                  className={`py-2 px-3.5 rounded-lg text-xs font-medium transition-all cursor-pointer border ${
                     reviewLength === l 
-                    ? "bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-semibold shadow-sm" 
-                    : "bg-slate-50 dark:bg-slate-800/40 text-slate-500 hover:bg-slate-100"
+                    ? "bg-rose-100 text-rose-700 font-semibold shadow-sm border-transparent" 
+                    : "bg-slate-50 text-slate-500 border-slate-200 hover:bg-slate-100"
                   }`}
                 >
                   {l}
@@ -249,13 +250,13 @@ export function ReviewGenerator() {
         </div>
 
         {/* Section 5: Textarea Detail Block */}
-        <div className="bg-white dark:bg-slate-900/80 rounded-2xl p-5 border border-slate-100 dark:border-slate-800/60 shadow-sm">
+        <div className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
           <label className="block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-3">Add specific detail (Optional)</label>
           <textarea
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             rows={2}
-            className="w-full bg-slate-50/50 dark:bg-slate-900/40 border border-slate-100 dark:border-slate-800 rounded-xl p-3 text-xs sm:text-sm focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all resize-none"
+            className="w-full bg-slate-50/50 border border-slate-100 rounded-xl p-3 text-xs sm:text-sm focus:ring-2 focus:ring-rose-400 focus:border-transparent outline-none transition-all resize-none text-slate-800 placeholder:text-slate-300"
             placeholder="e.g., The chrome design turned out flawless..."
           />
         </div>
@@ -282,22 +283,22 @@ export function ReviewGenerator() {
               exit={{ opacity: 0, y: 10 }}
               className="mt-2"
             >
-              <div className="p-5 rounded-2xl bg-gradient-to-br from-rose-50/60 to-pink-50/40 dark:from-slate-800/60 dark:to-slate-800/30 border border-pink-100/50 dark:border-slate-800 relative shadow-md">
-                <p className="text-slate-800 dark:text-slate-200 font-serif text-base sm:text-lg leading-relaxed italic">
+              <div className="p-5 rounded-2xl bg-gradient-to-br from-rose-50/60 to-pink-50/40 border border-pink-100 relative shadow-md">
+                <p className="text-slate-800 font-serif text-base sm:text-lg leading-relaxed italic">
                   "{generatedReview}"
                 </p>
                 
                 <div className="mt-5 flex flex-col sm:flex-row gap-3">
                   <button
                     onClick={handleCopyAndRedirect}
-                    className="flex-1 py-3.5 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-sm font-semibold flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors cursor-pointer"
+                    className="flex-1 py-3.5 px-4 rounded-xl bg-slate-900 text-white text-sm font-semibold flex items-center justify-center gap-2 hover:bg-slate-800 transition-colors cursor-pointer"
                   >
                     {isCopied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     Copy & Open Google Review
                   </button>
                   <button
                     onClick={handleGenerate}
-                    className="py-3.5 px-5 rounded-xl bg-white dark:bg-slate-900 text-slate-600 dark:text-slate-400 border border-slate-100 dark:border-slate-800 text-sm font-medium flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+                    className="py-3.5 px-5 rounded-xl bg-white text-slate-600 border border-slate-200 text-sm font-medium flex items-center justify-center gap-2 hover:bg-slate-50 transition-colors cursor-pointer"
                   >
                     <RefreshCw className="w-4 h-4" />
                     Try Another
