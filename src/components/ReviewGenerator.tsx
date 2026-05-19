@@ -15,7 +15,7 @@ const SERVICES = [
   "Press-on 🎀"
 ];
 
-const EXPERIENCES = ["Friendly artist 🥰", "Clean salon 🧼", "Premium experience 💎", "Fast service ⚡", "Long lasting 🛡️", "Beautiful art 🎨", "Hygienic setup 🌿", "Great pricing 💰"];
+const EXPERIENCES = ["Friendly artist 🥰","Premium experience 💎", "Fast service ⚡", "Long lasting 🛡️", "Beautiful art 🎨", "Hygienic setup 🌿", "Great pricing 💰"];
 const MOODS = ["Luxury 👑", "Cute 🧸", "Elegant 🦢", "Glamorous 🪩", "Minimal ☁️"];
 const LENGTHS = ["Short ⚡", "Medium 📝", "Long 📖"];
 
