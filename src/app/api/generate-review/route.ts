@@ -24,19 +24,21 @@ export async function POST(req: Request) {
     if (length === "Long") lengthPrompt = "Make it a detailed, longer review, around 4-5 sentences.";
 
     const prompt = `
-      Write a Google review for Rakhee's NailStudio. 
+      Write a Google Maps review for Rakhee's NailStudio.
       Rating: ${rating}/5 stars. 
-      Services: ${services.join(", ")}. 
+      Services received: ${services.join(", ")}. 
       Highlights: ${experiences.join(", ")}. 
       Tone: ${mood}. 
       Extra notes: ${notes || "None"}.
       
-      Rules:
-      1. ${lengthPrompt}
-      2. Use simple, everyday conversational English that sounds authentic for a local Indian customer. Do not use complex or fancy vocabulary. Use relatable phrases (e.g., "very neat work", "superb", "really loved it", "highly recommended").
-      3. IMPORTANT PROPRIETOR RULE: The studio does NOT have a staff. It is run by a solo artist. NEVER use the words "staff", "team", or "they". Instead, refer to "the artist", mention Rakhee by name, or use singular pronouns (e.g., "Rakhee was very polite", "she did an amazing job", or "very friendly artist").
-      4. Include exactly 1 or 2 relevant emojis naturally (like 💅, ✨, ❤️, 💖) but do not overdo it.
-      5. Output ONLY the review text. Do not wrap it in quotes.
+      CRITICAL RULES:
+      1. LENGTH: ${lengthPrompt}
+      2. SEO OPTIMIZATION: You MUST mention the city "Kalyan" naturally to help with local search. You MUST mention "Rakhee" (the artist) by name. You MUST include the exact service they chose in the text.
+      3. LANGUAGE & TONE: Write in extremely simple, everyday English. It must sound like a real, authentic local person from Mumbai/Kalyan casually typing on their phone. Do NOT use fancy vocabulary or overly formal words.
+      4. HINGLISH TOUCH: Lightly sprinkle 1 or 2 common conversational Hinglish phrases (e.g., "ekdum perfect", "bohot nice", "mast", "superb", "paisa vasool", "best in Kalyan"). Do not overdo it—keep it subtle and natural.
+      5. SOLO ARTIST RULE: The studio has NO staff. NEVER use words like "staff", "team", or "they". Use "Rakhee", "she", or "the artist".
+      6. EMOJIS: Add 1 or 2 relevant emojis naturally (like 💅, ✨, ❤️).
+      7. OUTPUT: Output ONLY the review text. Do not wrap it in quotes.
     `;
 
     const result = await model.generateContent(prompt);

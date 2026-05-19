@@ -5,8 +5,17 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, Copy, RefreshCw, Check } from "lucide-react";
 import toast from "react-hot-toast";
 
-const SERVICES = ["Gel Nails", "Chrome Nails", "Bridal Nails", "Nail Extensions", "French Tips", "Nail Art"];
-// Changed "Friendly staff" to "Friendly artist"
+// Updated with your exact SEO service list
+const SERVICES = [
+  "Gum gel extension", 
+  "Gel extension", 
+  "Soft gel extension", 
+  "Temporary nail extension", 
+  "Gel overlay", 
+  "Gum gel overlay", 
+  "Press-on"
+];
+
 const EXPERIENCES = ["Friendly artist", "Clean salon", "Premium experience", "Fast service", "Long lasting", "Beautiful art", "Hygienic setup", "Great pricing"];
 const MOODS = ["Luxury", "Cute", "Elegant", "Glamorous", "Minimal"];
 const LENGTHS = ["Short", "Medium", "Long"];
@@ -137,14 +146,14 @@ export function ReviewGenerator() {
         {/* Services Received */}
         <div className="mb-6">
           <label className="block text-xs font-semibold tracking-wider text-slate-400 uppercase mb-3">Select Services</label>
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+          <div className="flex flex-wrap gap-2">
             {SERVICES.map((s) => {
               const active = selectedServices.includes(s);
               return (
                 <button
                   key={s}
                   onClick={() => toggleSelection(s, selectedServices, setSelectedServices)}
-                  className={`py-3 px-3 rounded-xl text-xs font-medium border transition-all duration-200 active:scale-95 cursor-pointer text-center truncate ${
+                  className={`py-2.5 px-3.5 rounded-xl text-xs font-medium border transition-all duration-200 active:scale-95 cursor-pointer text-center ${
                     active 
                     ? "bg-gradient-to-r from-rose-400 to-pink-500 text-white border-transparent shadow-md shadow-pink-500/10 font-semibold" 
                     : "bg-slate-50/50 dark:bg-slate-800/40 text-slate-600 dark:text-slate-300 border-slate-100 dark:border-slate-800 hover:border-rose-200"
