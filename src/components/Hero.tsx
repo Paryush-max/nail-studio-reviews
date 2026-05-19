@@ -24,9 +24,6 @@ export function Hero() {
             Flawless Experience
           </span>
         </h1>
-        <p className="text-lg text-slate-600 dark:text-slate-300 max-w-xl mx-auto mb-8 font-light">
-          Let AI craft the perfect review for your stunning nails in seconds.
-        </p>
       </motion.div>
     </section>
   );
