@@ -15,9 +15,9 @@ const SERVICES = [
   "Press-on 🎀"
 ];
 
+// REMOVED: "Clean salon 🧼"
 const EXPERIENCES = [
   "Friendly artist 🥰", 
-  "Clean salon 🧼", 
   "Premium experience 💎", 
   "Fast service ⚡", 
   "Long lasting 🛡️", 
