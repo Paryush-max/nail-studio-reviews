@@ -15,7 +15,6 @@ const SERVICES = [
   "Press-on 🎀"
 ];
 
-// REMOVED: "Clean salon 🧼"
 const EXPERIENCES = [
   "Friendly artist 🥰", 
   "Premium experience 💎", 
@@ -63,7 +62,6 @@ export function ReviewGenerator() {
       return;
     }
 
-    // Only force them to pick an experience if they gave 4 or 5 stars
     if (rating >= 4 && selectedExperiences.length === 0) {
       toast.error("Please tell us what you loved! 💖");
       return;
@@ -92,7 +90,6 @@ export function ReviewGenerator() {
         throw new Error(errorData.error);
       }
 
-      // The Live Stream Decoder
       const reader = res.body?.getReader();
       const decoder = new TextDecoder("utf-8");
       
@@ -101,7 +98,6 @@ export function ReviewGenerator() {
       let done = false;
       let streamedText = "";
 
-      // Loops constantly, typing out words the second they arrive
       while (!done) {
         const { value, done: readerDone } = await reader.read();
         done = readerDone;
@@ -116,7 +112,7 @@ export function ReviewGenerator() {
     } catch (error: any) {
       toast.error(error.message || "Failed to generate review.");
     } finally {
-      setIsGenerating(false); // Typing finished!
+      setIsGenerating(false); 
     }
   };
 
@@ -125,7 +121,17 @@ export function ReviewGenerator() {
     
     await navigator.clipboard.writeText(generatedReview);
     setIsCopied(true);
-    toast.success("Opening Google Maps... 🗺️");
+    
+    toast.success("Copied! 📋 Just long-press and 'Paste' on Google Maps.", { 
+      duration: 4000,
+      position: "bottom-center",
+      style: {
+        background: '#1e293b',
+        color: '#fff',
+        fontSize: '14px',
+        fontWeight: '500'
+      }
+    });
     
     setTimeout(() => {
       const reviewLink = process.env.NEXT_PUBLIC_GOOGLE_REVIEW_LINK;
@@ -133,7 +139,7 @@ export function ReviewGenerator() {
         window.open(reviewLink, "_blank");
       }
       setIsCopied(false);
-    }, 1200);
+    }, 2500); 
   };
 
   return (
@@ -198,14 +204,14 @@ export function ReviewGenerator() {
           )}
         </AnimatePresence>
 
-        {/* Section 4: Optional Detail */}
+        {/* Section 4: Complaint Box (ONLY SHOWS FOR 1, 2, AND 3 STARS NOW) */}
         <AnimatePresence>
-          {rating > 0 && (
-            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm">
+          {rating > 0 && rating <= 3 && (
+            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }} className="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm overflow-hidden">
               <label className="block text-[10px] font-bold tracking-widest text-slate-400 uppercase mb-3">
-                {rating >= 4 ? "Add specific detail (Optional)" : "Please tell us what went wrong so we can fix it"}
+                Please tell us what went wrong so we can fix it
               </label>
-              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={2} className="w-full bg-slate-50/50 border border-slate-100 rounded-xl p-3 text-xs sm:text-sm focus:ring-2 focus:ring-rose-400 outline-none resize-none text-slate-800 placeholder:text-slate-300" placeholder={rating >= 4 ? "e.g., The chrome design turned out flawless..." : "e.g., The wait time was too long..."} />
+              <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={2} className="w-full bg-slate-50/50 border border-slate-100 rounded-xl p-3 text-xs sm:text-sm focus:ring-2 focus:ring-rose-400 outline-none resize-none text-slate-800 placeholder:text-slate-300" placeholder="e.g., The wait time was too long..." />
             </motion.div>
           )}
         </AnimatePresence>
